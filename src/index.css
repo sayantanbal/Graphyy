@@ -1,0 +1,289 @@
+/* Import KaTeX CSS for mathematical expressions */
+@import 'katex/dist/katex.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+html {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Custom styles for the graphing calculator */
+.graph-canvas {
+  cursor: crosshair;
+  user-select: none;
+}
+
+.graph-canvas.dragging {
+  cursor: grabbing;
+}
+
+.expression-input {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.sidebar-panel {
+  background-color: white;
+  border-right: 1px solid rgb(229, 231, 235);
+}
+
+.dark .sidebar-panel {
+  background-color: rgb(17, 24, 39);
+  border-right-color: rgb(55, 65, 81);
+}
+
+/* Animation for function plotting */
+@keyframes plot-animation {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-plot {
+  animation: plot-animation 2s ease-in-out;
+}
+
+/* Smooth scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode scrollbars */
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Toolbar button improvements */
+.toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: rgb(107, 114, 128);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.toolbar-button:hover {
+  color: rgb(59, 130, 246);
+}
+
+.dark .toolbar-button {
+  color: rgb(156, 163, 175);
+}
+
+.dark .toolbar-button:hover {
+  color: rgb(96, 165, 250);
+}
+
+/* Graph canvas styling */
+.graph-canvas {
+  background: transparent;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Function item styling fixes */
+.function-color-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Expression input styling */
+.expression-input {
+  font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+}
+
+/* Ensure text doesn't get cropped */
+.expression-editor code {
+  word-break: break-all;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.expression-editor button {
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Function item enhancements */
+.function-item {
+  transition: all 0.2s ease-in-out;
+}
+
+.function-item:hover {
+  transform: translateY(-1px);
+}
+
+/* Enhanced function color indicator */
+.function-color-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.function-color-indicator:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Better dark mode support for function items */
+.dark .function-item {
+  background-color: rgb(31, 41, 55);
+}
+
+.dark .function-item:hover {
+  background-color: rgb(55, 65, 81);
+}
+
+/* Color picker styling */
+.color-picker-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.color-picker-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.color-picker-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.color-picker-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.color-picker-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark .color-picker-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .color-picker-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Color button hover effects */
+.color-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
