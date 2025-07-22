@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useCalculatorStore } from '@/contexts/CalculatorStore';
 import { FunctionExpression } from '@/types';
 import { safeEvaluate, detectFunctionType } from '@/utils/mathUtils';
